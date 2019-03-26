@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Xamarin.iOS.FluentAutoLayoutExtensions</id>
+    <version>$version$</version>
+    <title>Xamarin.iOS.FluentAutoLayoutExtensions</title>
+    <authors>jzeferino</authors>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/jzeferino/Xamarin.iOS.FluentAutoLayoutExtensions</projectUrl>
+    <iconUrl>https://github.com/jzeferino/Xamarin.iOS.FluentAutoLayoutExtensions/blob/master/art/icon.png?raw=true</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Xamarin.iOS Fluent Auto Layout Extensions.</description>    
+    <tags>xamarin, iOS, autolayout, fluent</tags>
+  </metadata>
+  <files>
+    <file src="Xamarin.iOS.FluentAutoLayoutExtensions/bin/Release/Xamarin.iOS.FluentAutoLayoutExtensions.dll" target="lib/Xamarin.iOS10/Xamarin.iOS.FluentAutoLayoutExtensions.dll" />
+  </files>
+</package>
