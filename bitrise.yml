@@ -15,7 +15,7 @@ workflows:
             set -ex            
 
             # build script
-            ./build.sh -v diagnostic 
+            ./build.sh -v diagnostic -t Publish-NuGetPackage
     - deploy-to-bitrise-io@1.3.6: {}
 app:
   envs:
