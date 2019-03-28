@@ -11,14 +11,20 @@ namespace Xamarin.iOS.FluentAutoLayoutExtensions.Sample
             View.BackgroundColor = UIColor.White;
 
             var leftTopView = new UIView { BackgroundColor = UIColor.Red }.EnableAutoLayout();
-            var centeredView = new UIView { BackgroundColor = UIColor.Black }.EnableAutoLayout();
+            var centeredView = new UIView { BackgroundColor = UIColor.Blue }.EnableAutoLayout();
             var relativeSizeView = new UIView { BackgroundColor = UIColor.Orange }.EnableAutoLayout();
-            var rightTopSafeMargin = new UIView { BackgroundColor = UIColor.Green }.EnableAutoLayout();
+            var rightTopSafeMarginView = new UIView { BackgroundColor = UIColor.Green }.EnableAutoLayout();
+            var fullSizeView = new UIView { BackgroundColor = UIColor.Purple.ColorWithAlpha(0.3f) }.EnableAutoLayout();
+            var relativePositionView = new UIView { BackgroundColor = UIColor.Purple.ColorWithAlpha(0.3f) }.EnableAutoLayout();
 
             View.AddSubview(centeredView);
+            View.AddSubview(fullSizeView);
             View.AddSubview(leftTopView);
             View.AddSubview(relativeSizeView);
-            View.AddSubview(rightTopSafeMargin);
+            View.AddSubview(rightTopSafeMarginView);
+            View.AddSubview(relativePositionView);
+
+            fullSizeView.FullSizeOf(View);
 
             centeredView.WithSize(200, 200);
             centeredView.WithSameCenterX(View);
@@ -28,13 +34,18 @@ namespace Xamarin.iOS.FluentAutoLayoutExtensions.Sample
             leftTopView.WithSameTop(View);
             leftTopView.WithSameLeading(View);
 
-            rightTopSafeMargin.WithSize(100, 100);
-            rightTopSafeMargin.WithSameSafeTopSafeArea(View);
-            rightTopSafeMargin.WithSameTrailing(View);
+            rightTopSafeMarginView.WithSize(100, 100);
+            rightTopSafeMarginView.WithSameSafeTopSafeArea(View);
+            rightTopSafeMarginView.WithSameTrailing(View);
 
             relativeSizeView.WithRelativeWidth(View, 0.5f);
             relativeSizeView.WithRelativeHeight(View, 0.5f);
             relativeSizeView.WithSameBottom(View);
+            relativeSizeView.WithSameLeading(View);
+
+            relativePositionView.ToRightOf(relativeSizeView);
+            relativePositionView.WithSameBottom(relativeSizeView);
+            relativePositionView.WithSize(100, 200);
         }
     }
 }

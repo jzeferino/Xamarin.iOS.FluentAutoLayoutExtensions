@@ -4,6 +4,9 @@ using UIKit;
 
 namespace Xamarin.iOS.FluentAutoLayoutExtensions
 {
+    /// <summary>
+    /// Fluent auto layout extensions.
+    /// </summary>
     public static partial class FluentAutoLayoutExtensions
     {
         private const float DefaultMargin = 0;

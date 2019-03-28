@@ -1,16 +1,17 @@
 
 #tool "GitVersion.CommandLine&version=4.0.0"
+#addin nuget:?package=Cake.XmlDocMarkdown&version=1.4.2
 
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 var buildVerbosity = Argument("buildVerbosity", Verbosity.Minimal);
 
 // Define directories.
-var solutionFile = GetFiles("./*.sln").First();
+var solutionFile = GetFiles("./src/*.sln").First();
 
 // iOS.
-var iOSProject = GetFiles("./Xamarin.iOS.FluentAutoLayoutExtensions/*.csproj").First();
-var iOSSample = GetFiles("./Xamarin.iOS.FluentAutoLayoutExtensions.Sample/*.csproj").First();
+var iOSProject = GetFiles("./src/Xamarin.iOS.FluentAutoLayoutExtensions/*.csproj").First();
+var iOSSample = GetFiles("./src/Xamarin.iOS.FluentAutoLayoutExtensions.Sample/*.csproj").First();
 
 // Output folder.
 var artifactsDirectory = Directory("./artifacts");
@@ -38,6 +39,9 @@ Task("Clean-Solution")
 	.IsDependentOn("Clean-ArtifactsFolder")
 	.Does(() => 
 	{
+		CleanDirectories ("./**/bin");
+		CleanDirectories ("./**/obj");
+
 		MSBuild(solutionFile, settings => settings
 			.SetConfiguration(configuration)
 			.WithTarget("Clean")
@@ -67,8 +71,7 @@ Task("Build")
 	.Does(() => {});
 
 Task("Build-Sample")
-	.IsDependentOn("Clean-Solution")
-	.IsDependentOn("Restore-Packages")
+	.IsDependentOn("Prepare-Build")
 	.Does(() =>  
 	{	
 		MSBuild(iOSSample, settings =>
@@ -81,8 +84,7 @@ Task("Build-Sample")
 	});
 
 Task("Build-Library")
-	.IsDependentOn("Clean-Solution")
-	.IsDependentOn("Restore-Packages")
+	.IsDependentOn("Prepare-Build")
 	.Does(() =>  
 	{	
 		MSBuild(iOSProject, settings => settings
@@ -93,6 +95,7 @@ Task("Build-Library")
 
 Task ("NuGet")
 	.IsDependentOn("Build")
+	.IsDependentOn("Generate-Docs")
 	.Does (() =>
 	{	
 		NuGetPack(
@@ -102,7 +105,7 @@ Task ("NuGet")
 				Version = currentVersion.NuGetVersion,
 				Verbosity = NuGetVerbosity.Normal,
 				OutputDirectory = artifactsDirectory,
-				BasePath = "./",
+				BasePath = "./src",
 			});	
 	});
 
@@ -119,6 +122,13 @@ Task ("Publish-NuGetPackage")
 				Source = Environment.GetEnvironmentVariable("NUGET_PACKAGE_SOURCE"),
 				ApiKey = Environment.GetEnvironmentVariable("NUGET_PACKAGE_APY_KEY")
 			});
+	});
+
+Task ("Generate-Docs")
+	.IsDependentOn("Build")
+	.Does (() => 
+	{		
+		XmlDocMarkdownGenerate($"./src/Xamarin.iOS.FluentAutoLayoutExtensions/bin/{configuration}/Xamarin.iOS.FluentAutoLayoutExtensions.dll", "./docs");
 	});
 
 Task("Default")
