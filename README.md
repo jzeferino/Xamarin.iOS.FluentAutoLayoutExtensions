@@ -5,8 +5,6 @@
   <img src="https://github.com/jzeferino/Xamarin.iOS.FluentAutoLayoutExtensions/blob/master/art/logo.png?raw=true"/>
 </p>
 
-# Xamarin.iOS.FluentAutoLayoutExtensions
-
 Xamarin.iOS.FluentAutoLayoutExtensions is a set of extension methods that will help you write Auto Layout constraints with a lot of ease and speed.
 
 The main goal of this project is to have basic building blocks that will help write less Auto Layout constraint code in a fluent way. 
@@ -14,7 +12,7 @@ The main goal of this project is to have basic building blocks that will help wr
 
 # Usage examples
 
-- Centering a view in the screen.
+- Centering a view in the screen:
 
 ```c#
 var centeredView = new UIView { BackgroundColor = UIColor.Blue }.EnableAutoLayout();
@@ -30,7 +28,7 @@ centeredView.WithSameCenterY(View);
   <img src="https://github.com/jzeferino/Xamarin.iOS.FluentAutoLayoutExtensions/blob/master/art/centered.png?raw=true" width="400"/>
 </p>
 
-- Align view in bottom with relative size.
+- Align view in bottom with relative size:
 
 ```c#
 var relativeSizeView = new UIView { BackgroundColor = UIColor.Orange }.EnableAutoLayout();
@@ -45,7 +43,7 @@ relativeSizeView.WithSameBottom(View);
   <img src="https://github.com/jzeferino/Xamarin.iOS.FluentAutoLayoutExtensions/blob/master/art/relative_size.png?raw=true" width="400"/>
 </p>
 
-- Align view to right of another view.
+- Align view to right of another view:
 
 ```c#
 var relativeSizeView = new UIView { BackgroundColor = UIColor.Orange }.EnableAutoLayout();
