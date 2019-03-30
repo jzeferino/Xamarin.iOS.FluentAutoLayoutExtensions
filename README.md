@@ -27,7 +27,7 @@ The main goal of this project is to have basic building blocks that will help wr
 ```
 
 <p align="center">
-  <img src="https://github.com/jzeferino/Xamarin.iOS.FluentAutoLayoutExtensions/blob/master/art/centered.png?raw=true" width="200"/>
+  <img src="https://github.com/jzeferino/Xamarin.iOS.FluentAutoLayoutExtensions/blob/master/art/centered.png?raw=true" width="300"/>
 </p>
 
 - Align view in bottom with relative size.
@@ -42,7 +42,7 @@ The main goal of this project is to have basic building blocks that will help wr
 ```
 
 <p align="center">
-  <img src="https://github.com/jzeferino/Xamarin.iOS.FluentAutoLayoutExtensions/blob/master/art/relative_size.png?raw=true" width="200"/>
+  <img src="https://github.com/jzeferino/Xamarin.iOS.FluentAutoLayoutExtensions/blob/master/art/relative_size.png?raw=true" width="300"/>
 </p>
 
 - Align view to right of another view.
@@ -65,8 +65,10 @@ The main goal of this project is to have basic building blocks that will help wr
 ```
 
 <p align="center">
-  <img src="https://github.com/jzeferino/Xamarin.iOS.FluentAutoLayoutExtensions/blob/master/art/align_right.png?raw=true" width="200"/>
+  <img src="https://github.com/jzeferino/Xamarin.iOS.FluentAutoLayoutExtensions/blob/master/art/align_right.png?raw=true" width="300"/>
 </p>
 
-# [Full documentation](docs/Xamarin.iOS.FluentAutoLayoutExtensions/FluentAutoLayoutExtensions.md)
+# Documentation
+
+- You can take a look at the full documentation [here](docs/Xamarin.iOS.FluentAutoLayoutExtensions/FluentAutoLayoutExtensions.md).
 
